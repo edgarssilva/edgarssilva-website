@@ -7,6 +7,8 @@ import { z } from "zod";
 const server = z.object({
   DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(["development", "test", "production"]),
+  NOTION_API_KEY: z.string(),
+  NOTION_DATABASE_ID: z.string(),
 });
 
 /**
@@ -26,6 +28,8 @@ const client = z.object({
 const processEnv = {
   DATABASE_URL: process.env.DATABASE_URL,
   NODE_ENV: process.env.NODE_ENV,
+  NOTION_API_KEY: process.env.NOTION_API_KEY,
+  NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
