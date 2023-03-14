@@ -1,39 +1,23 @@
-import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import React from "react";
-import { env } from "~/env.mjs";
-import { notion } from "~/server/notion";
+import { n2m } from "~/server/notion";
 
-type Page = {
-  title: string;
-  description: string;
-  slug: string;
-  date: string;
-};
+import { remark } from "remark";
+import html from "remark-html";
 
-const getPages = async () => {
-  const { results: pages } = await notion.databases.query({
-    database_id: env.NOTION_DATABASE_ID,
-    filter: {
-      property: "Status",
-      status: {
-        equals: "Published",
-      },
-    },
-  });
+const getPage = async () => {
+  console.log("Getting page");
+  const mdblocks = await n2m.pageToMarkdown("51e421206a914d299def6b106a1e1b03");
+  const markdown = n2m.toMarkdownString(mdblocks);
 
-  return pages;
+  return String(await remark().use(html).process(markdown));
 };
 
 const Blog = async () => {
-  const pages = await getPages();
+  const page = await getPage();
   return (
     <>
-      {pages.map((page) => (
-        <div key={page.id}>
-          <h2>{page.properties.Name.title[0].plain_text}</h2>
-          {/* <p>{page.properties.Description.rich_text[0].plain_text}</p> */}
-        </div>
-      ))}
+      <h1>Test Blog</h1>
+      <div dangerouslySetInnerHTML={{ __html: page }} />
     </>
   );
 };
