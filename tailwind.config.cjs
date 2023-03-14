@@ -1,10 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./node_modules/flowbite-react/**/*.js",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-roboto)"],
+        // mono: ['var(--font-roboto-mono)'],
+      },
+    },
   },
-  plugins: [ require('@tailwindcss/typography'),],
+  plugins: [require("@tailwindcss/typography"), require("flowbite/plugin")],
 };
 
 module.exports = config;

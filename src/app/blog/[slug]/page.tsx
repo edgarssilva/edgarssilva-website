@@ -46,22 +46,24 @@ const getPage = async (slug: string) => {
     },
   });
 
-  if (!pages) return "";
+  if (!pages) return { page: null, html: "" };
   const page = pages[0];
-  if (!page) return "";
+  if (!page) return { page: null, html: "" };
 
   const mdblocks = await n2m.pageToMarkdown(page.id);
   const markdown = n2m.toMarkdownString(mdblocks);
 
-  return String(await remark().use(html).process(markdown));
+  return { page, html: String(await remark().use(html).process(markdown)) };
 };
 
 const Blog = async ({ params }: { params: { slug: string } }) => {
-  const page = await getPage(params.slug);
+  const { page, html } = await getPage(params.slug);
   return (
     <article className="prose mx-auto">
-      <h1>Test Blog</h1>
-      <div dangerouslySetInnerHTML={{ __html: page }} />
+      <h1 className="text-6xl font-extrabold">
+        {page.properties.Name.title[0].plain_text}
+      </h1>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </article>
   );
 };
