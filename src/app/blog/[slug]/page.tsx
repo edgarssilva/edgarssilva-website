@@ -25,7 +25,6 @@ export async function getStaticPaths() {
 }
 
 const getPage = async (slug: string) => {
-  console.log("slug", slug);
   const { results: pages } = await notion.databases.query({
     database_id: env.NOTION_DATABASE_ID,
     filter: {
@@ -61,7 +60,7 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
   return (
     <article className="prose mx-auto">
       <h1 className="text-6xl font-extrabold">
-        {page.properties.Name.title[0].plain_text}
+        {page.properties.Title.title[0].plain_text}
       </h1>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </article>

@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" className={`${roboto.className}`}>
       <body>
         <Nav />
-        <main className="container mx-auto">{children}</main>
+        <main className="mx-auto max-w-6xl">{children}</main>
       </body>
     </html>
   );
