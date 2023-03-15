@@ -6,7 +6,7 @@ import React from "react";
 export default function Nav() {
   return (
     <nav className="border.gray rounded bg-white px-2 py-2.5 dark:bg-gray-900 sm:px-4 ">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between">
         <a href="/">
           <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
             Edgarssilva

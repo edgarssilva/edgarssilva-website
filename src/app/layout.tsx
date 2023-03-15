@@ -20,10 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${roboto.className}`}>
+    <html lang="en" className={`${roboto.className} `}>
       <body>
         <Nav />
-        <main className="mx-auto max-w-6xl">{children}</main>
+        <main className="mx-auto max-w-7xl">{children}</main>
       </body>
     </html>
   );
