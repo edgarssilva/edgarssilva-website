@@ -101,7 +101,7 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
           <span className="text-lg font-medium"> {stats.likes}</span>
         </div>
       </aside>
-      <article className="prose mx-auto min-h-screen max-w-none grow bg-white">
+      <article className="prose mx-auto min-h-screen max-w-none grow bg-white ">
         <h1 className="text-6xl font-extrabold">
           {page.properties.Title.title[0].plain_text}
         </h1>

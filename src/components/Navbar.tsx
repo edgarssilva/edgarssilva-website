@@ -1,15 +1,32 @@
 //prettier-ignore
 "use client";
 
+import { useTheme } from "next-themes";
 import React from "react";
 
 export default function Nav() {
+  const { systemTheme, theme, setTheme } = useTheme();
+
+  const themeChanger = () => {
+    const currentTheme = theme === "system" ? systemTheme : theme;
+
+    if (currentTheme === "dark") {
+      return <span onClick={toggleTheme}>☀️</span>;
+    } else {
+      return <span onClick={toggleTheme}>🌙</span>;
+    }
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
-    <nav className="border.gray rounded bg-white px-2 py-2.5 dark:bg-gray-900 sm:px-4 ">
+    <nav className="border.gray rounded px-2 py-8 sm:px-4 ">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between">
         <a href="/">
-          <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
-            Edgarssilva
+          <span className="self-center whitespace-nowrap text-2xl  font-semibold tracking-wide dark:text-white">
+            Edgar Silva
           </span>
         </a>
         <button
@@ -35,11 +52,11 @@ export default function Nav() {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-gray-900">
+          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 p-4 dark:border-gray-700 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium ">
             <li>
               <a
                 href="/"
-                className="block rounded bg-blue-700 py-2 pl-3 pr-4 font-medium text-white dark:text-white md:bg-transparent md:p-0 md:text-blue-700"
+                className="block rounded bg-blue-700 py-2 pl-3 pr-4 text-base  font-medium text-white dark:text-white md:bg-transparent md:p-0 md:text-blue-700"
                 aria-current="page"
               >
                 Home
@@ -48,7 +65,7 @@ export default function Nav() {
             <li>
               <a
                 href="/blog"
-                className="block rounded py-2 pl-3 pr-4 font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                className="block rounded py-2 pl-3 pr-4 text-base  font-medium text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
               >
                 Blog
               </a>
@@ -56,7 +73,7 @@ export default function Nav() {
             <li>
               <a
                 href="/portfolio"
-                className="block rounded py-2 pl-3 pr-4 font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                className="block rounded py-2 pl-3 pr-4 text-base  font-medium text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
               >
                 Portfolio
               </a>
@@ -64,11 +81,12 @@ export default function Nav() {
             <li>
               <a
                 href="/contact"
-                className="block rounded py-2 pl-3 pr-4 font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                className="block rounded py-2 pl-3 pr-4 text-base  font-medium text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
               >
                 Contact
               </a>
             </li>
+            {themeChanger()}
           </ul>
         </div>
       </div>

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
+  darkMode: "class",
   content: [
     "./node_modules/flowbite-react/**/*.js",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,7 +8,7 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-roboto)"],
+        sans: ["var(--font-inter)"],
         // mono: ['var(--font-roboto-mono)'],
       },
     },
