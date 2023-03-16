@@ -43,7 +43,7 @@ const Blog = async () => {
     <div className="px-4 lg:px-0">
       <h1 className="text-5xl font-extrabold">{title}</h1>
       <h3 className="mt-2 text-lg font-medium text-gray-500">
-        Read My Latest Articles on a Variety of Topics
+        Read My Latest Posts on a Variety of Topics
       </h3>
       <div className="mt-8 grid gap-8 md:grid-cols-3">
         {pages.map((page) => (
