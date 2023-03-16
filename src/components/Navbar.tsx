@@ -2,6 +2,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { HiMoon, HiSun } from "react-icons/hi2";
 import React from "react";
 
 export default function Nav() {
@@ -10,11 +11,11 @@ export default function Nav() {
   const themeChanger = () => {
     const currentTheme = theme === "system" ? systemTheme : theme;
 
-    if (currentTheme === "dark") {
-      return <span onClick={toggleTheme}>☀️</span>;
-    } else {
-      return <span onClick={toggleTheme}>🌙</span>;
-    }
+    return currentTheme === "dark" ? (
+      <HiSun className="cursor-pointer text-xl" onClick={toggleTheme} />
+    ) : (
+      <HiMoon className="cursor-pointer text-xl" onClick={toggleTheme} />
+    );
   };
 
   const toggleTheme = () => {
@@ -25,7 +26,7 @@ export default function Nav() {
     <nav className="border.gray rounded px-2 py-8 sm:px-4 ">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between">
         <a href="/">
-          <span className="self-center whitespace-nowrap text-2xl  font-semibold tracking-wide dark:text-white">
+          <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
             Edgar Silva
           </span>
         </a>
@@ -52,7 +53,7 @@ export default function Nav() {
           </svg>
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 p-4 dark:border-gray-700 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium ">
+          <ul className="mt-4 flex flex-col items-center rounded-lg border border-gray-100 p-4 dark:border-gray-700 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:text-sm md:font-medium ">
             <li>
               <a
                 href="/"

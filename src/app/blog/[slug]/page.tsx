@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cache } from "react";
 import { n2m, notion } from "~/server/notion";
 
 import { remark } from "remark";
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
   };
 }
 
-const getPage = async (slug: string) => {
+const getPage = cache(async (slug: string) => {
   const { results: pages } = await notion.databases.query({
     database_id: env.NOTION_DATABASE_ID,
     filter: {
@@ -54,7 +54,7 @@ const getPage = async (slug: string) => {
   const markdown = n2m.toMarkdownString(mdblocks);
 
   return { page, html: String(await remark().use(html).process(markdown)) };
-};
+});
 
 const getStats = async (slug: string) => {
   let post = await prisma.post.findUnique({
@@ -92,22 +92,22 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
   const stats = await getStats(params.slug);
 
   return (
-    <div className="flex flex-row gap-10">
-      <aside className="relative">
-        <div className="mt-28 flex flex-col items-center">
-          <span className="text-4xl">👀</span>
-          <span className="text-lg font-medium"> {stats.views}</span>
-          <span className="mt-4 text-4xl">👏</span>
-          <span className="text-lg font-medium"> {stats.likes}</span>
-        </div>
-      </aside>
-      <article className="prose mx-auto min-h-screen max-w-none grow bg-white ">
-        <h1 className="text-6xl font-extrabold">
-          {page.properties.Title.title[0].plain_text}
-        </h1>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </article>
-      <aside className="dark:gray-700 max-w-xs grow bg-gray-100 p-4"></aside>
+    <div className="min-h-screen">
+      <h4 className="font-medium text-neutral-500">
+        {new Date(page.properties.Date.date.start).toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })}
+      </h4>
+      <h1 className="my-2 text-6xl font-extrabold">
+        {page.properties.Title.title[0].plain_text}
+      </h1>
+      <h4 className="font-medium text-neutral-500">{stats.views} views</h4>
+      <article
+        className="prose max-w-3xl dark:prose-invert"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
     </div>
   );
 };

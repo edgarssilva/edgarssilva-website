@@ -1,4 +1,3 @@
-import Nav from "~/components/Navbar";
 import { Inter } from "next/font/google";
 import "~/styles/globals.css";
 import Providers from "~/components/Provider";
@@ -9,11 +8,13 @@ export const metadata = {
 };
 
 const inter = Inter({
-  weight: ["100", "300", "400", "500", "700", "900"],
+  // weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
+
+import Nav from "~/components/Navbar";
 
 export default function RootLayout({
   children,
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Nav />
           <main className="mx-auto max-w-7xl">{children}</main>
         </Providers>
+        <script> </script>
       </body>
     </html>
   );
