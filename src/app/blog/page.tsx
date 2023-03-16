@@ -1,8 +1,8 @@
-import React from "react";
+import React, { cache } from "react";
 import { env } from "~/env.mjs";
 import { notion } from "~/server/notion";
 
-const getPages = async () => {
+const getPages = cache(async () => {
   const { results: pages } = await notion.databases.query({
     database_id: env.NOTION_DATABASE_ID,
     filter: {
@@ -14,13 +14,34 @@ const getPages = async () => {
   });
 
   return pages;
-};
+});
+
+const getTitle = cache(() => {
+  const titles = [
+    "What's on My Mind ✍️",
+    "Musings and Ramblings ✍️",
+    "The Latest from Me ✍️",
+    "My Quirky Thoughts ✍️",
+    "Randomness and Rants ✍️",
+    "Words from Yours Truly ✍️",
+    "The Emoji-filled Chronicles ✍️",
+    "Blogging with Personality ✍️",
+    "Updates and Insights ✍️",
+    "My Blogging Adventure ✍️",
+    "Fresh Blog Content ✍️",
+    "Wordsmith Writings ✍️",
+  ];
+
+  return titles[Math.floor(Math.random() * titles.length)];
+});
 
 const Blog = async () => {
   const pages = await getPages();
+  const title = getTitle();
+
   return (
     <div className="px-4 lg:px-0">
-      <h1 className="text-4xl font-bold">A blog about stuff 🤔</h1>
+      <h1 className="text-5xl font-extrabold">{title}</h1>
 
       <div className="mt-8 grid gap-8 md:grid-cols-3">
         {pages.map((page) => (

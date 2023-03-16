@@ -116,11 +116,8 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
       <aside className="h-screen w-72 py-8">
         <h2 className="text-lg font-semibold">About</h2>
         <p className="w-72 text-sm text-neutral-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          voluptates, quod, quia, voluptatibus quae voluptatem quibusdam
-          voluptatum quos quas dolorum nesciunt. Quisquam, quae. Quisquam
-          voluptates, quod, quia, voluptatibus quae voluptatem quibusdam
-          voluptatum quos quas dolorum nesciunt. Quisquam, quae.
+          Debating on whether to keep this section or not. I think it's
+          unnecessary. But it be nice to have a place to put some ads 🤑
         </p>
       </aside>
     </div>
