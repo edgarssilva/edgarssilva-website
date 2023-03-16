@@ -92,22 +92,37 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
   const stats = await getStats(params.slug);
 
   return (
-    <div className="min-h-screen">
-      <h4 className="font-medium text-neutral-500">
-        {new Date(page.properties.Date.date.start).toLocaleDateString("en-US", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })}
-      </h4>
-      <h1 className="my-2 text-6xl font-extrabold">
-        {page.properties.Title.title[0].plain_text}
-      </h1>
-      <h4 className="font-medium text-neutral-500">{stats.views} views</h4>
-      <article
-        className="prose max-w-3xl dark:prose-invert"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+    <div className="flex min-h-screen flex-row">
+      <article className="flex-1 grow">
+        <h4 className="font-medium text-neutral-500">
+          {new Date(page.properties.Date.date.start).toLocaleDateString(
+            "en-US",
+            {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }
+          )}
+        </h4>
+        <h1 className="my-2 text-6xl font-extrabold">
+          {page.properties.Title.title[0].plain_text}
+        </h1>
+        <h4 className="font-medium text-neutral-500">{stats.views} views</h4>
+        <div
+          className="prose mt-8 max-w-3xl dark:prose-invert "
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </article>
+      <aside className="h-screen w-72 py-8">
+        <h2 className="text-lg font-semibold">About</h2>
+        <p className="w-72 text-sm text-neutral-500">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          voluptates, quod, quia, voluptatibus quae voluptatem quibusdam
+          voluptatum quos quas dolorum nesciunt. Quisquam, quae. Quisquam
+          voluptates, quod, quia, voluptatibus quae voluptatem quibusdam
+          voluptatum quos quas dolorum nesciunt. Quisquam, quae.
+        </p>
+      </aside>
     </div>
   );
 };
