@@ -13,24 +13,24 @@ import timespan from 'date-and-time/plugin/timespan';
 date.plugin(ordinal);
 date.plugin(timespan);
 
-export async function getStaticPaths() {
-  const { results: pages } = await notion.databases.query({
-    database_id: env.NOTION_DATABASE_ID,
-    filter: {
-      property: "Status",
-      status: {
-        equals: "Published",
-      },
-    },
-  });
+// export async function getStaticPaths() {
+//   const { results: pages } = await notion.databases.query({
+//     database_id: env.NOTION_DATABASE_ID,
+//     filter: {
+//       property: "Status",
+//       status: {
+//         equals: "Published",
+//       },
+//     },
+//   });
 
-  return {
-    paths: pages.map((page) => ({
-      params: { slug: page.properties.Slug.rich_text[0].plain_text },
-    })),
-    fallback: false,
-  };
-}
+//   return {
+//     paths: pages.map((page) => ({
+//       params: { slug: page.properties.Slug.rich_text[0].plain_text },
+//     })),
+//     fallback: false,
+//   };
+// }
 
 const getPage = cache(async (slug: string) => {
   const { results: pages } = await notion.databases.query({
