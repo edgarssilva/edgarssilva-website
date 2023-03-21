@@ -10,10 +10,10 @@ const Page = () => {
         </span>
         .
       </h1>
-      <h3 className="text-lg font-medium text-gray-600 dark:text-gray-200">
+                  <h3 className="text-lg font-medium text-gray-600 dark:text-gray-200">
         A Master&apos;s student in Software Engineering. Welcome to my personal
         place.
-        <br />
+                 <br />
         Here you can look through{" "}
         <a className="text-blue-600 dark:text-blue-400" href="/blog">
           my blog
