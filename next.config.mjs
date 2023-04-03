@@ -21,5 +21,8 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   }, */
+  images: {
+    domains: ["assets.justinmind.com", "365webresources.com"],
+  },
 };
 export default config;
