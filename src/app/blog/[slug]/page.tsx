@@ -7,8 +7,8 @@ import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
 
 import date from "date-and-time";
-import ordinal from 'date-and-time/plugin/ordinal';
-import timespan from 'date-and-time/plugin/timespan';
+import ordinal from "date-and-time/plugin/ordinal";
+import timespan from "date-and-time/plugin/timespan";
 
 date.plugin(ordinal);
 date.plugin(timespan);
@@ -106,10 +106,12 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
     <div className="flex min-h-screen flex-col lg:flex-row">
       <article className="flex-1 grow">
         <h4 className="font-medium text-neutral-500">
-          {date.format(pageDate, 'dddd, MMMM DDD YYYY')}
+          {date.format(pageDate, "dddd, MMMM DDD YYYY")}
           {/* TODO: Add X amount of minutes/hours/days/months/years ago */}
           {" ("}
-          {date.isSameDay(now, pageDate) ? diffDate.toHours('H [hours] m [minutes]') : diffDate.toDays("D [days]")}
+          {date.isSameDay(now, pageDate)
+            ? diffDate.toHours("H [hours] m [minutes]")
+            : diffDate.toDays("D [days]")}
           {" ago)"}
         </h4>
         <h1 className="my-2 text-6xl font-extrabold">
@@ -121,16 +123,20 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
-      <aside className="mt-32 h-screen w-72 py-8 divide-y divide-gray-300 dark:divide-neutral-600">
+      <aside className="mt-32 h-screen w-72 divide-y divide-gray-300 py-8 dark:divide-neutral-600">
         <div className="mb-6">
           <h2 className="mb-2 text-lg font-semibold">About</h2>
           <p className="w-72 text-sm text-neutral-500">
             Debating on whether to keep this section or not. I think it's
             unnecessary. But it be nice to have a place to put some ads 🤑
           </p>
-          <div className="flex flex-row flex-wrap gap-3 my-3">
-            <div className="rounded-full bg-red-300 hover:bg-red-500 hover:text-red-100 dark:bg-red-900 dark:hover:bg-red-800 cursor-pointer px-4 text-red-900 dark:text-red-300 dark:hover:text-red-200 ">Test</div>
-            <div className="rounded-full bg-yellow-300 hover:bg-yellow-500 hover:text-yellow-100 dark:bg-yellow-900 dark:hover:bg-yellow-800 cursor-pointer px-4 text-yellow-900 dark:text-yellow-300 dark:hover:text-yellow-200">Random Shit</div>
+          <div className="my-3 flex flex-row flex-wrap gap-3">
+            <div className="cursor-pointer rounded-full bg-red-300 px-4 text-red-900 hover:bg-red-400  dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800 dark:hover:text-red-200 ">
+              Test
+            </div>
+            <div className="cursor-pointer rounded-full bg-yellow-300 px-4 text-yellow-900 hover:bg-yellow-400 dark:bg-yellow-900 dark:text-yellow-300 dark:hover:bg-yellow-800 dark:hover:text-yellow-200">
+              Random Shit
+            </div>
           </div>
         </div>
       </aside>
