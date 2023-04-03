@@ -127,8 +127,9 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
         <div className="mb-6">
           <h2 className="mb-2 text-lg font-semibold">About</h2>
           <p className="w-72 text-sm text-neutral-500">
-            Debating on whether to keep this section or not. I think it's
-            unnecessary. But it be nice to have a place to put some ads 🤑
+            Debating on whether to keep this section or not. I think it
+            {`&apos;`}s unnecessary. But it be nice to have a place to put some
+            ads 🤑
           </p>
           <div className="my-3 flex flex-row flex-wrap gap-3">
             <div className="cursor-pointer rounded-full bg-red-300 px-4 text-red-900 hover:bg-red-400  dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800 dark:hover:text-red-200 ">
