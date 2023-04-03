@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className}`} suppressHydrationWarning>
-      <body className="mx-auto max-w-7xl antialiased dark:bg-neutral-900 dark:text-white sm:px-6">
+      <body className="mx-auto max-w-7xl px-6 antialiased dark:bg-neutral-900 dark:text-white ">
         <Providers>
           <Nav />
           {children}
