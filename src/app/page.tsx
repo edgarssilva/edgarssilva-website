@@ -17,7 +17,7 @@ const Page = () => {
           </span>
           .
         </h1>
-        <h3 className="text-lg font-medium text-gray-600 dark:text-gray-200">
+        <p className="text-lg font-medium text-gray-600 dark:text-gray-200">
           A Master&apos;s student in Software Engineering. Welcome to my
           personal place.
           <br />
@@ -34,11 +34,11 @@ const Page = () => {
             my projects
           </a>
           .
-        </h3>
+        </p>
       </header>
       <main className="my-24">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-4xl font-extrabold">Featured Projects</h2>
+          <h2 className="text-3xl font-extrabold">Featured Projects</h2>
           <a href="/portfolio" className={`font-medium ${linkClass}`}>
             See more -{">"}
           </a>
