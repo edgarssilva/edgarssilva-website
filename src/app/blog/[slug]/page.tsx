@@ -9,6 +9,7 @@ import { prisma } from "~/server/db";
 import date from "date-and-time";
 import ordinal from "date-and-time/plugin/ordinal";
 import timespan from "date-and-time/plugin/timespan";
+import Badge from "~/components/Badge";
 
 date.plugin(ordinal);
 date.plugin(timespan);
@@ -127,17 +128,12 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
         <div className="mb-6">
           <h2 className="mb-2 text-lg font-semibold">About</h2>
           <p className="w-72 text-sm text-neutral-500">
-            Debating on whether to keep this section or not. I think it
-            {`&apos;`}s unnecessary. But it be nice to have a place to put some
-            ads 🤑
+            Debating on whether to keep this section or not. I think it &apos;s
+            unnecessary. But it be nice to have a place to put some ads 🤑
           </p>
           <div className="my-3 flex flex-row flex-wrap gap-3">
-            <div className="cursor-pointer rounded-full bg-red-300 px-4 text-red-900 hover:bg-red-400  dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800 dark:hover:text-red-200 ">
-              Test
-            </div>
-            <div className="cursor-pointer rounded-full bg-yellow-300 px-4 text-yellow-900 hover:bg-yellow-400 dark:bg-yellow-900 dark:text-yellow-300 dark:hover:bg-yellow-800 dark:hover:text-yellow-200">
-              Random Shit
-            </div>
+            <Badge content="React" color="red" />
+            <Badge content="Next.js" color="yellow" />
           </div>
         </div>
       </aside>
